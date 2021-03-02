@@ -43,7 +43,7 @@ HCluster::missCurveAreaDistance(const std::vector<RawMissCurve> &P,
     auto systemCurve = whirlpool::systemMissCurve(Pc, Qc);
     auto combinedCurve = whirlpool::combinedMissCurve(Pc, Qc);
     for (uint32_t i = 0; i < systemCurve.getDomain(); i++) {
-      area += std::abs(combinedCurve.y(i) - systemCurve.y(i));
+      area += std::abs(static_cast<int>(combinedCurve.y(i) - systemCurve.y(i)));
     }
   }
   return area / numIntervals;
